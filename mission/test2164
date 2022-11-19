@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let cardArray = [];
+        let last = '';
+
+        function lastCard(n){ // 마지막 카드를 구해주는 함수
+            for(i=1; i<n+1; i++){
+                cardArray.push(i);
+            }
+            for(i=0; i<cardArray.length+1; i++){
+                changeCard(cardArray); // 함수실행
+            }
+            last = cardArray[0];
+            console.log(last);
+            return last;        
+        }
+
+        function changeCard(array){ // 카드 순서와 개수를 바꾸는 함수
+                array.splice(0,1);   
+                const lastCard = array[0];
+                array.splice(0,1);
+                array.push(lastCard);
+                return cardArray;                
+        }
+        lastCard(5)
+
+
+    </script>
+</body>
+</html>
