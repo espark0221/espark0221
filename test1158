@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+    // 1. n명 중 k번째를 배열에서 제거
+    // 2. 기존 배열에서 k+1번째 사람부터 배열 재구성 >>> 기존배열에서 k전의 사람을 뒤로 옮기기(제거하고 뒤에 붙이기)
+    // 3. 새로운 배열에서 n번째 제거-배열 재구성 반복
+
+    let array = [];
+    let lastList= [];
+    let deleteList = []; // 요세푸스 순열
+    let answerList = [];
+
+    // fnAnswer(10, 4);
+    fnAnswer(7, 3);
+
+    function fnChangeOne(k){ //
+        for(i=0; i<k-1; i++){
+            array.push(array[0]);
+            array.splice(0,1);
+        }
+        return array;
+    }
+    function fnChangeTwo(k){
+        array.sort();
+        // if(array.length < k){ // arraylength가 k보다 작은 경우
+        //     for(j=k-2; j<0; j--){
+        //         console.log(j)
+        //     }
+        // }
+        return array;
+    }
+
+    function fnAnswer(n,k){ // 요세푸스 순열을 구해주는 함수
+        for(i=1; i<n+1; i++){
+            array.push(i);
+        }
+        // console.log("CreateArray>>", array) // 생성한 배열
+        for(i=0; i<array.length; i++){
+            deleteList.push(...array.splice(k-1 ,1));
+            this.fnChangeOne(k);
+            if(array.length<=k){
+                for(i=0; i<k; i++){
+                    lastList.push(...array.splice(k-1 ,1));
+                    array.push(array[0]);
+                    array.splice(0,1);
+                    this.fnChangeTwo(k);
+                    answerList = deleteList + "," + lastList + "," + array
+                }
+            }
+        }
+        console.log("answerList>>>",answerList)
+        return answerList;
+    }
+
+</script>
