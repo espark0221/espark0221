@@ -24,10 +24,10 @@
     // fnAnswer(10, 4);
     fnAnswer(7, 3);
 
-    function replaceArray(k){ //
+    function replaceArray(k){ 
         for(i=0; i<k-1; i++){
-            ManArray.push(ManArray[0]);
-            ManArray.splice(0,1);
+            ManArray.push(ManArray[0]); // 제거된 k 앞에 있던 사람들을 배열에 다시 푸쉬
+            ManArray.splice(0,1); // 푸쉬한 사람들 순차적 제거
         }
         return array;
     }
@@ -37,7 +37,7 @@
         }
         // console.log("CreateArray>>", ManArray) // 생성한 배열
         for(i=0; i<array.length; i++){
-            deleteList.push(...ManArray.splice(k-1 ,1));
+            deleteList.push(...ManArray.splice(k-1 ,1)); // k번째 사람 인덱스는 k-1
             this.replaceArray(k);
             if(ManArray.length<=k){
                 for(i=0; i<k; i++){
