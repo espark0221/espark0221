@@ -31,16 +31,6 @@
         }
         return array;
     }
-    function fnChangeTwo(k){
-        array.sort();
-        // if(array.length < k){ // arraylength가 k보다 작은 경우
-        //     for(j=k-2; j<0; j--){
-        //         console.log(j)
-        //     }
-        // }
-        return array;
-    }
-
     function fnAnswer(n,k){ // 요세푸스 순열을 구해주는 함수
         for(i=1; i<n+1; i++){
             array.push(i);
@@ -54,7 +44,6 @@
                     lastList.push(...array.splice(k-1 ,1));
                     array.push(array[0]);
                     array.splice(0,1);
-                    this.fnChangeTwo(k);
                     answerList = deleteList + "," + lastList + "," + array
                 }
             }
