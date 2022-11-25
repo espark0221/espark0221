@@ -53,7 +53,7 @@
                     ManArray.push(ManArray[0]);
                     ManArray.splice(0,1);
                     console.log("ManArray>>",ManArray)
-                    ManArray.sort();
+                    ManArray.reverse();
                     console.log("SortASay>>",ManArray)
                     answerList = DeleteArray + "," + lastList + "," + ManArray
                 }
