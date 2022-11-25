@@ -28,33 +28,38 @@
     let answerList = [];
 
     // fnAnswer(10, 4);
-    fnAnswer(7, 3);
+    fnAnswer(5,3); // 7명중 3번째 제거
 
     function replaceArray(k){ 
         for(i=0; i<k-1; i++){
+
             ManArray.push(ManArray[0]); // 제거된 k 앞에 있던 사람들을 배열에 다시 푸쉬
             ManArray.splice(0,1); // 푸쉬한 사람들 순차적 제거
+            // console.log("ManArray>>>",ManArray)
         }
-        return array;
+        return ManArray;
     }
     function fnAnswer(n,k){ // 요세푸스 순열을 구해주는 함수
         for(i=1; i<=n; i++){
             ManArray.push(i);
         }
         // console.log("CreateArray>>", ManArray) // 생성한 배열
-        for(i=0; i<array.length; i++){
-            deleteList.push(...ManArray.splice(k-1 ,1)); // k번째 사람 인덱스는 k-1
+        for(i=0; i<ManArray.length; i++){ //i<=n
+            DeleteArray.push(...ManArray.splice(k-1 ,1)); // k번째 사람 인덱스는 k-1
             this.replaceArray(k);
             if(ManArray.length<=k){
                 for(i=0; i<k; i++){
                     lastList.push(...ManArray.splice(k-1 ,1));
-                    ManArray.push(array[0]);
+                    ManArray.push(ManArray[0]);
                     ManArray.splice(0,1);
-                    answerList = deleteList + "," + lastList + "," + ManArray
+                    console.log("ManArray>>",ManArray)
+                    ManArray.sort();
+                    console.log("SortASay>>",ManArray)
+                    answerList = DeleteArray + "," + lastList + "," + ManArray
                 }
             }
         }
-        console.log("answerList>>>",answerList)
+        // console.log("answerList>>>",answerList, DeleteArray, lastList, ManArray);
         return answerList;
     }
 
