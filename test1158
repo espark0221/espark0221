@@ -16,35 +16,35 @@
     // 2. 기존 배열에서 k+1번째 사람부터 배열 재구성 >>> 기존배열에서 k전의 사람을 뒤로 옮기기(제거하고 뒤에 붙이기)
     // 3. 새로운 배열에서 n번째 제거-배열 재구성 반복
 
-    let array = [];
+    let ManArray = []; // 사람들 배열
     let lastList= [];
-    let deleteList = []; // 요세푸스 순열
+    let DeleteArray = []; // 제거된 사람들
     let answerList = [];
 
     // fnAnswer(10, 4);
     fnAnswer(7, 3);
 
-    function fnChangeOne(k){ //
+    function replaceArray(k){ //
         for(i=0; i<k-1; i++){
-            array.push(array[0]);
-            array.splice(0,1);
+            ManArray.push(ManArray[0]);
+            ManArray.splice(0,1);
         }
         return array;
     }
     function fnAnswer(n,k){ // 요세푸스 순열을 구해주는 함수
-        for(i=1; i<n+1; i++){
-            array.push(i);
+        for(i=1; i<=n; i++){
+            ManArray.push(i);
         }
-        // console.log("CreateArray>>", array) // 생성한 배열
+        // console.log("CreateArray>>", ManArray) // 생성한 배열
         for(i=0; i<array.length; i++){
-            deleteList.push(...array.splice(k-1 ,1));
-            this.fnChangeOne(k);
-            if(array.length<=k){
+            deleteList.push(...ManArray.splice(k-1 ,1));
+            this.replaceArray(k);
+            if(ManArray.length<=k){
                 for(i=0; i<k; i++){
-                    lastList.push(...array.splice(k-1 ,1));
-                    array.push(array[0]);
-                    array.splice(0,1);
-                    answerList = deleteList + "," + lastList + "," + array
+                    lastList.push(...ManArray.splice(k-1 ,1));
+                    ManArray.push(array[0]);
+                    ManArray.splice(0,1);
+                    answerList = deleteList + "," + lastList + "," + ManArray
                 }
             }
         }
